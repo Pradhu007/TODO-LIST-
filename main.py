@@ -12,17 +12,13 @@ from tkinter.ttk import Frame, Label, Entry, Button
 
 # create a tkinker based ui
 
-
-
-
-
 def alarmhandler():
     for alarm in tasks:
         print("{}:{}".format(alarm.name,alarm.time))
 
         if(alarm.time == datetime.now().strftime("%I:%M %p")):
             s = pyttsx3.init()
-            s.say("{}".format("GO AND  {} ".format(alarm.name)))
+            s.say("{}".format("GO AND  DO YOUR {} RIGHT NOW BRO".format(alarm.sound)))
             s.runAndWait()
             tasks.remove(alarm)
 
@@ -62,7 +58,7 @@ class SimpleDialog(tkinter.Frame):
         frame2.pack(fill=X)
 
         lbl2 = Label(frame2, text="TaskDesc", width=10)
-        lbl2.pack(side=LEFT, padx=5, pady=10)
+        lbl2.pack(side=LEFT, padx=6, pady=10)
 
         self.entry2 = Entry(frame2,textvariable=self.output2)
         self.entry2.pack(fill=X, padx=5, expand=True)
@@ -70,8 +66,8 @@ class SimpleDialog(tkinter.Frame):
         frame3 = Frame(self)
         frame3.pack(fill=X)
 
-        lbl3 = Label(frame3, text="Soundtoplay", width=9)
-        lbl3.pack(side=LEFT, padx=5, pady=10)
+        lbl3 = Label(frame3, text="what to say?", width=10)
+        lbl3.pack(side=LEFT, padx=6, pady=15)
 
 
         self.entry3 = Entry(frame3, textvariable=self.output3)
@@ -80,7 +76,7 @@ class SimpleDialog(tkinter.Frame):
         frame4 = Frame(self)
         frame4.pack(fill=X)
         lbl4 = Label(frame4, text="Time", width=9)
-        lbl4.pack(side=LEFT, padx=5, pady=10)
+        lbl4.pack(side=LEFT, padx=8, pady=10)
         self.entry4 = Entry(frame4, textvariable=self.output4)
         self.entry4.pack(fill=X, padx=5, expand=True)
 
@@ -153,4 +149,5 @@ text2.pack()
 plusbutton = tkinter.Button(root,text="+",command=SimpleDialog)
 plusbutton.pack()
 root.mainloop()
+
 
